@@ -1,0 +1,42 @@
+# ワークフローの名前を定義する
+name: check build
+
+# ワークフローの実行方法を定義する
+on:
+  pull_request:
+
+# ワークフローで行う処理を定義する
+jobs:
+  # 処理の名前を定義
+  build:
+    # 実行環境や諸々の設定を定義
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
+    steps:
+      - name: step1
+        run: echo "step1"
+
+      - uses: checkout@v24
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+
+      - name: install
+        run: |
+          npm install
+
+      - name: install
+        run: |
+          npm install --prefix ./docs
+
+      - name: build-checking
+        run: |
+          npm run build
+
+  # 実際に行う処理のステップを記載
