@@ -11,5 +11,23 @@ jobs:
   build:
     # 実行環境や諸々の設定を定義
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
+    steps:
+      - name: step1
+        run: echo "step1"
+
+      - uses: checkout@v24
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: install
+        run: |
+          npm install
+      - name: build-checking
+        run: |
+          npm run build
 
   # 実際に行う処理のステップを記載
