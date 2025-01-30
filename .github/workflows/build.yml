@@ -23,9 +23,18 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+
       - name: install
         run: |
           npm install
+
+      - name: install
+        run: |
+          npm install --prefix ./docs
+
       - name: build-checking
         run: |
           npm run build
