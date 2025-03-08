@@ -1,5 +1,5 @@
 import styles from '@/styles/Home.module.scss';
-import Button from '@/components/Button';
+import Button from '@/components/button/BaseButton';
 
 export default function Home() {
   const handleClick = () => {
