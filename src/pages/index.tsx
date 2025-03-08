@@ -1,20 +1,19 @@
-import styles from '@/styles/Home.module.scss';
-import Button from '@/components/button/BaseButton';
-import { AccordionBanner } from '@/components/banner/AccordionBanner';
+import { GetServerSideProps } from 'next';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
-export default function Home() {
-  const handleClick = () => {
-    console.log('Button clicked!');
-  };
+export const getServerSideProps = (async () => {
+  return { props: {} };
+}) satisfies GetServerSideProps;
 
-  return (
-    <div className={styles.container}>
-      <h1>Button Component Example</h1>
-      <AccordionBanner
-        mainText="Main Banner Text"
-        subText="Additional information that appears when expanded"
-      />
-      <Button onClick={handleClick}>Click Me</Button>
-    </div>
-  );
-}
+const Page = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace('/example');
+  }, [router]);
+
+  return null;
+};
+
+export default Page;
