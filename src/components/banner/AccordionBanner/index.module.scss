@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.mainText {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.subText {
+  padding-top: 8px;
+  font-size: 14px;
+  color: #666;
+}
