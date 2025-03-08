@@ -53,3 +53,28 @@ display: flexまたはdispley: gridを基本的に使用し、要素間の余白
   - templateコンポーネントはContainer/Presentationalパターンに従い、`index.tsx`にロジックを記載し、`Preesenter.tsx`にUIを記載すること
   - templateコンポーネント以外のbuttonなどのシンプルなUIコンポーネントはContainer/Presentationalパターンにしたがう必要はありません
 -
+
+## ページ
+
+`/src/pages`配下のディレクトリ構成は以下を参考にしてください。なお、これはあくまで一例であり、ここにあるディレクトリやファイルを作成する必要がないことを留意してください。
+```
+/
+└─ src
+   └─ pages
+      ├─ example
+      │  └─ index.tsx
+      ├─ my
+      │  ├─ account
+      │  │  └─ index.ts
+      │  └─ index.tsx
+      ├─ _apps.tsx
+      └─ _document.tsx
+```
+
+以下に要点を記載します
+- 基本はNext.jsのPages Routerの命名原則に基づく
+- Pageにはcssを用いてstyleは当てない
+- Pageは基本的にはそのページのtemplateコンポーネントを呼び出すためのファイルとする
+- 基本的にはgetServerSidePropsを用いてSSRを行うようにする
+- inferGetServerSidePropsを用いてPageのPropsをいちいち定義しないようにする
+- Pageのコンポーネント名は`Page`とし、アロー記法で記述する
