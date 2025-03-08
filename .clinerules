@@ -1,0 +1,55 @@
+# 重要
+
+以下のコーディングガイドに則ってコードを記述します。
+
+# コーディングガイド
+
+## CSS
+
+cssはscssを使用し、rscssの命名規則にしたがってスタイル名を定義します。
+ただし、単語はハイフン区切りではなく、キャメルケースを使用して分割します。
+
+display: flexまたはdispley: gridを基本的に使用し、要素間の余白はgapを使用することを基本とします。
+ただし、marginを全く使用しないわけではないことを理解しています。
+
+## コンポーネント
+
+`/src/components`配下のディレクトリ構成は以下を参考にしてください。なお、これはあくまで一例であり、ここにあるディレクトリやファイルを作成する必要がないことを留意してください。
+
+```
+/
+└─ src
+   └─ components
+      ├─ button
+      │  ├─ CopyButton
+      │  │  ├─ index.module.scss
+      │  │  └─ index.tsx
+      │  └─ BaseButton
+      │     ├─ index.module.scss
+      │     └─ index.tsx
+      ├─ banner
+      │  ├─ InfomationBanner
+      │  │  ├─ index.module.scss
+      │  │  └─ index.tsx
+      │  └─ NotificationBanner
+      │     ├─ index.module.scss
+      │     └─ index.tsx
+      └─ template
+         ├─ ExamplePageTemplate
+         │  ├─ index.module.scss
+         │  ├─ index.tsx
+         │  └─ Presenter.tsx
+         └─ AddressInputTemplate
+            ├─ index.module.scss
+            ├─ index.tsx
+            └─ Presenter.tsx
+```
+
+以下に要点を記載します
+
+- 原則、ディレクトリ名は大文字始まりのキャメルケースで記載したコンポーネント名を使用すること
+- buttonやbannerのような複数の種類が存在するコンポーネントは`button`のような小文字はじまりのキャメルケースで記載したディレクトリを作成し、そこにまとめること
+- 画面全体の表示要素をまとめたtemplateコンポーネントを使用すること
+  - templateコンポーネントはContainer/Presentationalパターンに従い、`index.tsx`にロジックを記載し、`Preesenter.tsx`にUIを記載すること
+  - templateコンポーネント以外のbuttonなどのシンプルなUIコンポーネントはContainer/Presentationalパターンにしたがう必要はありません
+-
